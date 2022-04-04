@@ -12,12 +12,10 @@ def solution(id_list, report, k):
         if not tmpArr[0] in dicSet[tmpArr[1]]:
             dicSet[tmpArr[1]].append(tmpArr[0])
     
-    for k, v in dicSet.items():
-        if len(v) >= 2:
-            for name in v:
+    for key, value in dicSet.items():
+        if len(value) >= k:
+            for name in value:
                 answer[id_list.index(name)] += 1
 
 
     return answer
-
-print(solution(["con", "ryan"], ["ryan con", "ryan con", "ryan con", "ryan con"], 3))
