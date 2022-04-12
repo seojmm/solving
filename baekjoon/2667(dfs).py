@@ -10,7 +10,6 @@ houses = []
 dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
 
-
 def dfs(x, y):
     global total
     total += 1
