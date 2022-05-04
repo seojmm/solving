@@ -41,4 +41,8 @@ def solution(begin, target, words):
     return answer
 
 
+<<<<<<< HEAD
 print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+=======
+print(solution("hit", "cog", ["hot", "dot", "dog", "lot", "log", "cog"]))
+>>>>>>> 59622aad575bf258121efa9a4ebb2e954fa1f84c
