@@ -5,18 +5,27 @@
 using namespace std;
 
 int solution(string s) {
-    int answer = 0;
+    int answer = s.length();
 
-    for(int i=1; i<s.length()/2; i++){
+    for(int token=1; token<=s.length()/2; token++){
         string tmp = "";
-        int nTmp = 0;
-        for(int j=0; j<s.length(); j++){
-            tmp += s.substr(j, i);
-            cout << tmp << endl;
+        string ans = "";
+        int cnt = 1;
+        tmp = s.substr(0, token);
+        for(int i=token; i<s.length(); i+=token){
+            if(s.substr(i, token) == tmp) cnt++;
+            else{
+                if(cnt > 1) ans += to_string(cnt);
+                ans += tmp;
+                tmp = s.substr(i, token);
+                cnt = 1;
+            }
         }
+        if(cnt > 1) ans += to_string(cnt);
+        ans += tmp;
+        if(answer > ans.length()) answer = ans.length();
+
     }
 
     return answer;
 }
-
-solution("abcabcabde");
