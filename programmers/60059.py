@@ -1,80 +1,44 @@
-#include <string>
-#include <vector>
+def fit(x, y, M, key, graph):
+    for i in range(M):
+        for j in range(M):
+            graph[x+i][y+j] += key[i][j]
 
-using namespace std;
+def unfit(x, y, M, key, graph):
+    for i in range(M):
+        for j in range(M):
+            graph[x+i][y+j] -= key[i][j]
 
-vector<vector<int>> gKey;
-int M, N;
+def rotate(arr):
+    return list(zip(*arr[::-1]))
 
-void fit(int x, int y, vector<vector<int>> graph, vector<vector<int>> key){
-    for(int i=0; i<M; i++){
-        for(int j=0; j<M; j++){
-            graph[x+i][y+j] += key[i][j];
-        }
-    }
-}
+def check(graph, M, N):
+    for i in range(N):
+        for j in range(N):
+            if graph[M+i][M+j] != 1:
+                return False;
+    return True
 
-void unfit(int x, int y, vector<vector<int>> graph, vector<vector<int>> key){
-    for(int i=0; i<M; i++){
-        for(int j=0; j<M; j++){
-            graph[x+i][y+j] -= key[i][j];
-        }
-    }
-}
+def solution(key, lock):
+    M, N = len(key), len(lock)
 
-void rotate(){
-    vector<vector<int>> tmp;
+    graph = [[0] * (M*2 + N) for _ in range(M*2 + N)]
 
-    for(int i=0; i<M; i++){
-        for(int j=0; j<M; j++){
-            tmp[j][M-1-i] = gKey[i][j];
-        }
-    }
+    for i in range(N):
+        for j in range(N):
+            graph[M+i][M+j] = lock[i][j]
 
-    gKey = tmp;
-}
+    rotated_key = key
 
-bool check(vector<vector<int>> graph){
-    for(int i=0; i<N; i++){
-        for(int j=0; j<N; j++){
-            if(graph[i+M][j+M] != 1){
-                return false;
-            }
-        }
-    }
+    for _ in range(4):
+        rotated_key = rotate(rotated_key)
+        for x in range(1, M+N):
+            for y in range(1, M+N):
+   
+                fit(x, y, M, rotated_key, graph)
 
-    return true;
-}
+                if(check(graph, M, N)):
+                    return True
 
-bool solution(vector<vector<int>> key, vector<vector<int>> lock) {
-    bool answer = true;
-    M = key.size();
-    N = lock.size();
-    vector<vector<int>> graph;
-    gKey = key;
-
-    // graph 중앙에 lock 배치
-    for(int i=M; i<M+N; i++){
-        for(int j=M; j<M+N; j++){
-            graph[i][j] = lock[i-M][j-M];
-        }
-    }
-
-    for(int i=0; i<4; i++){
-        rotate();
-        for(int x=0; x<M+N; x++){
-            for(int y=0; y<M+N; y++){
-                fit(x, y, graph, key);
-                if(check(graph)){
-                    return true;
-                }
-                unfit(x, y, graph, key);
-            }
-        }
-    }
-
-    
-
-
-    return false;
-}
+                unfit(x, y, M, rotated_key, graph)
+                
+    return False
