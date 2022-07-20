@@ -8,6 +8,8 @@ def unfit(x, y, M, key, graph):
         for j in range(M):
             graph[x+i][y+j] -= key[i][j]
 
+# X: 회전하기 전 Y
+# Y: (N-1) - 회전하기 전 X
 def rotate(arr):
     return list(zip(*arr[::-1]))
 
@@ -15,7 +17,7 @@ def check(graph, M, N):
     for i in range(N):
         for j in range(N):
             if graph[M+i][M+j] != 1:
-                return False;
+                return False
     return True
 
 def solution(key, lock):
