@@ -4,9 +4,8 @@
     // 자세한 내용을 보려면 https://go.microsoft.com/fwlink/?linkid=830387을(를) 방문하세요.
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "Python: Current File",
+            "name": "Python: 현재 파일",
             "type": "python",
             "request": "launch",
             "program": "${file}",
@@ -14,25 +13,23 @@
             "justMyCode": true
         },
         {
+            "name": "(gdb) Launch",
             "type": "cppdbg",
-            "name": "g++.exe - 활성 파일 빌드 및 디버그",
             "request": "launch",
+            "program": "${fileDirname}/${fileBasenameNoExtension}",
             "args": [],
-            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],
             "externalConsole": false,
             "MIMode": "gdb",
-            "miDebuggerPath": "C:\\mingw64\\bin\\gdb.exe",
             "setupCommands": [
                 {
-                    "description": "gdb에 자동 서식 지정 사용",
+                    "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
                     "ignoreFailures": true
                 }
-            ],
-            "preLaunchTask": "C/C++: g++.exe 활성 파일 빌드"
+            ]
         }
     ]
 }
