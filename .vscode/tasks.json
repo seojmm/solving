@@ -1,12 +1,16 @@
 {
     "version": "2.0.0",
     "runner": "terminal",
+    "type": "shell",
+    "echoCommand": true,
+    "presentation": {
+        "reveal": "always"
+    },
     "tasks": [
         {
-            "label": "g++ build",
+            "label": "save and compile for C++",
             "command": "g++",
             "args": [
-                "-g",
                 "${file}",
                 "-o",
                 "${fileDirname}/${fileBasenameNoExtension}"
@@ -63,7 +67,11 @@
         {
             "type": "cppbuild",
             "label": "C/C++: g++.exe 활성 파일 빌드",
+<<<<<<< HEAD
             "command": "C:\\mingw64\\bin\\g++.exe",
+=======
+            "command": "C:/mingw64/bin/g++.exe",
+>>>>>>> c5f2e03ec5b53bf452892ca01754eb92b6d3c9b6
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
@@ -72,7 +80,11 @@
                 "${fileDirname}\\${fileBasenameNoExtension}.exe"
             ],
             "options": {
+<<<<<<< HEAD
                 "cwd": "${fileDirname}"
+=======
+                "cwd": "C:/mingw64/bin"
+>>>>>>> c5f2e03ec5b53bf452892ca01754eb92b6d3c9b6
             },
             "problemMatcher": [
                 "$gcc"

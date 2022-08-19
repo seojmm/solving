@@ -192,3 +192,19 @@ int main()
 
     return 0;
 }
+
+int imp_lower(int arr[], int target, int N)
+{
+    int l = 0;
+    int r = N;
+    while (l < r)
+    {
+        int mid = l + (r - l) / 2;
+        if (arr[mid] < target)
+            l = mid + 1;
+        else
+            r = mid;
+    }
+
+    return l;
+}
