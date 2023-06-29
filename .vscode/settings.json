@@ -1,10 +1,14 @@
 {
-    "files.associations": {
-        "*.html": "html",
-        "iostream": "cpp",
-        "deque": "cpp",
-        "string": "cpp",
-        "vector": "cpp",
-        "type_traits": "cpp"
-    }
+	"files.associations": {
+		"*.html": "html",
+		"iostream": "cpp",
+		"deque": "cpp",
+		"string": "cpp",
+		"vector": "cpp",
+		"type_traits": "cpp"
+	},
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.autopep8"
+	},
+	"python.formatting.provider": "none"
 }
