@@ -9,4 +9,4 @@ while bin(N).count('1') > K:
     N += 1
     cnt += 1
 
-print(cnt)
+print(cnt) 
